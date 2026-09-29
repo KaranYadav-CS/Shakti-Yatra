@@ -10,7 +10,8 @@ Your website is **LIVE right now**! You can access it on your computer and share
 
 | Type | Link | Description |
 | :--- | :--- | :--- |
-| 🌍 **Public Social Media Link** | [https://branches-apache-anime-buying.trycloudflare.com](https://branches-apache-anime-buying.trycloudflare.com) | **Share this link on WhatsApp, Instagram, Facebook, LinkedIn, Twitter/X! Anyone on mobile or PC anywhere in the world can open it instantly!** |
+| 🐙 **Official GitHub Repository** | [https://github.com/KaranYadav-CS/Shakti-Yatra](https://github.com/KaranYadav-CS/Shakti-Yatra) | **Your public GitHub repository with full source code & documentation** |
+| 🌍 **Public Social Media Link** | [https://buzz-cnet-stand-vacation.trycloudflare.com](https://buzz-cnet-stand-vacation.trycloudflare.com) | **Share this link on WhatsApp, Instagram, Facebook, LinkedIn, Twitter! Works globally on mobile & PC!** |
 | 💻 **Localhost Home** | [http://localhost:3000](http://localhost:3000) | Local high-speed address on your machine |
 | 📜 **History of Maa Vindhyavasini** | [http://localhost:3000/history](http://localhost:3000/history) | Dedicated module with scriptural history, Utpatti, Ramayana & Gita connections |
 | 🗺️ **Vindhyachal Guide** | [http://localhost:3000/destinations/vindhyachal](http://localhost:3000/destinations/vindhyachal) | Complete Trikona Yatra & Aarti timings |
