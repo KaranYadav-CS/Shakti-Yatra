@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #080c14;
+  --foreground: #f8fafc;
+}
+
+html {
+  font-size: 17.5px; /* Comfortably enlarged medium readable typography */
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-panel-gold {
+  background: rgba(26, 20, 15, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.glow-shakti {
+  box-shadow: 0 0 30px -4px rgba(234, 88, 12, 0.45);
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px -4px rgba(234, 179, 8, 0.45);
+}
+
+/* 3D Interactive Information Zoom without any lag */
+.card-3d {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 25px 40px -10px rgba(234, 88, 12, 0.3), 0 12px 25px -5px rgba(234, 179, 8, 0.25);
+}
+
+.zoom-3d {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.zoom-3d:hover {
+  transform: scale(1.04);
+}
+
+/* Sacred Corner Frame Animation */
+@keyframes sacredGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px 4px rgba(245, 158, 11, 0.5), 0 0 40px 8px rgba(234, 88, 12, 0.3);
+    border-color: rgba(245, 158, 11, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 35px 8px rgba(245, 158, 11, 0.85), 0 0 60px 14px rgba(234, 88, 12, 0.5);
+    border-color: rgba(254, 240, 138, 1);
+  }
+}
+
+.sacred-corner-glow {
+  animation: sacredGlowPulse 4s infinite ease-in-out;
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #080c14;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}

@@ -1,0 +1,67 @@
+{
+  "project": "Shakti Yatra",
+  "developer": "Karan Yadav",
+  "destination": "Vindhyachal",
+  "version": "1.0.0",
+  "last_audit_date": "2026-09-01",
+  "verification_authority": "UP Tourism & District Administration Mirzapur",
+  "overview": {
+    "name": "Vindhyachal",
+    "district": "Mirzapur",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "coordinates": {
+      "latitude": 25.1614,
+      "longitude": 82.5029
+    },
+    "type": "Siddhpeeth",
+    "presiding_deity": "Maa Vindhyavasini (Mahalakshmi Roop)"
+  },
+  "trikona_yatra_shrine_network": [
+    {
+      "order": 1,
+      "name": "Maa Vindhyavasini Devi Temple",
+      "manifestation": "Mahalakshmi",
+      "location": "Banks of Holy Ganges",
+      "distance_from_center": "0.0 km",
+      "timings": {
+        "mangala_aarti": "04:00 AM - 05:00 AM",
+        "morning_darshan": "05:00 AM - 12:00 PM",
+        "rajbhog_aarti": "12:00 PM - 01:30 PM",
+        "afternoon_darshan": "02:00 PM - 07:15 PM",
+        "sandhya_aarti": "07:15 PM - 08:30 PM",
+        "shayan_aarti": "09:00 PM - 11:30 PM"
+      },
+      "wheelchair_access": true,
+      "amenities": ["Vindhya Corridor Plaza", "Ramps", "Elevators", "Shoe Counters", "Locker Facility"]
+    },
+    {
+      "order": 2,
+      "name": "Kali Khoh Temple",
+      "manifestation": "Mahakali (Chamunda)",
+      "location": "Base of Vindhya Hill Valley",
+      "distance_from_center": "2.1 km",
+      "ropeway_access": "Boarding station for aerial ropeway to Ashtabhuja is 150m away",
+      "wheelchair_access": false
+    },
+    {
+      "order": 3,
+      "name": "Maa Ashtabhuja Devi Temple",
+      "manifestation": "Mahasaraswati (Eight-Armed)",
+      "location": "Vindhya Hilltop Plateau",
+      "distance_from_center": "3.0 km",
+      "ropeway_access": "Upper ropeway terminal connects directly to temple gate",
+      "wheelchair_access": true
+    }
+  ],
+  "verified_emergency_helplines": {
+    "police": "112",
+    "police_station_vindhyachal": "05442-232225",
+    "ambulance": "108 / 102",
+    "community_health_centre": "05442-232230",
+    "district_hospital_mirzapur": "05442-252244",
+    "shrine_control_room": "05442-232222",
+    "women_safety": "1090",
+    "tourist_helpline": "1800-180-5145"
+  }
+}
