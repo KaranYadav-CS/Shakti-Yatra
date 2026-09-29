@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Sparkles, Maximize2, X, Eye, Heart, Camera } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface PhotoItem {
   id: number;
@@ -64,6 +65,7 @@ const GALLERY_PHOTOS: PhotoItem[] = [
 ];
 
 export const MaaVindhyavasiniGallery: React.FC = () => {
+  const { language, t } = useLanguage();
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
 
   return (
@@ -73,19 +75,19 @@ export const MaaVindhyavasiniGallery: React.FC = () => {
         <div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sm font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/15 border border-amber-500/30 mb-3">
             <Camera className="w-4 h-4 text-amber-400" />
-            <span>Dedicated Photo Module</span>
+            <span>{t('gallery_badge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight">
-            Maa Vindhyavasini Pavitra Darshan Gallery
+            {t('gallery_title')}
           </h2>
           <p className="text-slate-300 mt-3 max-w-2xl text-base sm:text-lg leading-relaxed">
-            Authentic, blessed glimpses of Maa Vindhyavasini Devi, sacred morning shringar, and the grand holy Dham. Hover over any photo to experience 3D depth and zoom.
+            {t('gallery_desc')}
           </p>
         </div>
 
         <div className="flex items-center gap-2 self-start md:self-auto">
           <span className="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm font-mono text-amber-300">
-            {GALLERY_PHOTOS.length} Authentic Photographs
+            {GALLERY_PHOTOS.length} {t('gallery_photos_count')}
           </span>
         </div>
       </div>

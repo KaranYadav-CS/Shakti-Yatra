@@ -1,8 +1,13 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Flame, ShieldCheck, Heart, MapPin, PhoneCall, ExternalLink, Code } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { language, t } = useLanguage();
+
   return (
     <footer className="border-t border-slate-800/80 bg-slate-950 text-slate-300 text-sm sm:text-base">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -18,18 +23,20 @@ export const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed">
-              An intelligent, accessible pilgrimage assistance platform connecting devotees with authentic temple heritage, verified services, and smart travel itineraries.
+              {language === 'hi'
+                ? "एक ज्ञानवान, सुलभ तीर्थ सहायता मंच जो श्रद्धालुओं को प्रामाणिक मंदिर परंपरा, सत्यापित आपातकालीन सेवाओं एवं स्मार्ट यात्रा योजनाओं से जोड़ता है।"
+                : "An intelligent, accessible pilgrimage assistance platform connecting devotees with authentic temple heritage, verified services, and smart travel itineraries."}
             </p>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-medium">
               <ShieldCheck className="w-4 h-4" />
-              <span>100% Grounded & Verified Data</span>
+              <span>{language === 'hi' ? '100% सत्यापित व प्रामाणिक तथ्य' : '100% Grounded & Verified Data'}</span>
             </div>
           </div>
 
           {/* Pilgrimage Links */}
           <div>
             <h4 className="font-serif font-bold text-white text-base uppercase tracking-wider mb-4 text-amber-300">
-              Pilgrimage Hub
+              {t('footer_hub_title')}
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
@@ -68,7 +75,7 @@ export const Footer: React.FC = () => {
           {/* Official Verification Sources */}
           <div>
             <h4 className="font-serif font-bold text-white text-base uppercase tracking-wider mb-4 text-amber-300">
-              Verified Portals
+              {t('footer_portals_title')}
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
@@ -104,7 +111,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link href="/emergency" className="text-rose-400 hover:text-rose-300 font-semibold flex items-center gap-1.5">
                   <PhoneCall className="w-3.5 h-3.5" />
-                  Emergency Helpdesk (112 / 108)
+                  {t('nav_emergency')} (112 / 108 / 1090)
                 </Link>
               </li>
             </ul>
@@ -113,16 +120,18 @@ export const Footer: React.FC = () => {
           {/* Developer Accreditation */}
           <div>
             <h4 className="font-serif font-bold text-white text-base uppercase tracking-wider mb-4 text-amber-300">
-              Developer & Platform
+              {t('footer_dev_title')}
             </h4>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
-              Designed and built as a smart full-stack pilgrimage assistance system combining 3D WebGL, verified shrine facts, and AI guidance.
+              {language === 'hi'
+                ? "3D वेबजीएल, सत्यापित मंदिर तथ्यों एवं एआई तीर्थ मार्गदर्शन के समन्वय से निर्मित पूर्ण-स्टैक प्रणाली।"
+                : "Designed and built as a smart full-stack pilgrimage assistance system combining 3D WebGL, verified shrine facts, and AI guidance."}
             </p>
 
             <div className="p-4 rounded-2xl bg-gradient-to-r from-slate-900 to-amber-950/60 border border-amber-500/40 text-sm space-y-1.5 shadow-lg">
               <div className="flex items-center gap-2 text-amber-300 font-bold text-base font-serif">
                 <Code className="w-4 h-4 text-amber-400" />
-                <span>Developed by Karan Yadav</span>
+                <span>{t('developed_by')}</span>
               </div>
               <div className="text-xs sm:text-sm text-slate-300">
                 Full-Stack AI Pilgrimage Platform
@@ -143,14 +152,16 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-14 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-400">
           <div>
-            &copy; {new Date().getFullYear()} Shakti Yatra. All verified sacred information attributed to respective shrine authorities.
+            &copy; {new Date().getFullYear()} {t('footer_copyright')}
           </div>
           <div className="flex items-center gap-3">
             <span className="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-300 font-medium">
-              Developed by Karan Yadav
+              {t('developed_by')}
             </span>
             <span>•</span>
-            <span className="font-serif italic text-slate-300">Discover. Plan. Experience.</span>
+            <span className="font-serif italic text-slate-300">
+              {language === 'hi' ? 'दर्शन • योजना • अनुभूति' : 'Discover. Plan. Experience.'}
+            </span>
           </div>
         </div>
       </div>

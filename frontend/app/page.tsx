@@ -23,8 +23,10 @@ import { MaaVindhyavasiniGallery } from '@/components/temple/MaaVindhyavasiniGal
 import { VindhyachalHistoryModule } from '@/components/history/VindhyachalHistoryModule';
 import { GooglePlacesExplorer } from '@/components/places/GooglePlacesExplorer';
 import { fetchDestinations, fetchDestinationDetail, Destination } from '@/lib/api';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function HomePage() {
+  const { language, t } = useLanguage();
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [vindhyachalData, setVindhyachalData] = useState<Destination | null>(null);
 
@@ -60,22 +62,24 @@ export default function HomePage() {
           {/* Badge with Developer Accreditation */}
           <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider bg-gradient-to-r from-shakti-950/90 via-slate-900 to-amber-950/90 border border-amber-400/40 text-amber-200 shadow-2xl backdrop-blur-xl animate-float-slow">
             <Flame className="w-4 h-4 text-shakti-400 animate-pulse" />
-            <span>Smart Pilgrimage Platform • Developed by Karan Yadav</span>
+            <span>{t('hero_badge')}</span>
           </div>
 
           {/* Main Title & Tagline with readable medium sizing */}
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-white leading-tight">
-              Welcome to <span className="bg-gradient-to-r from-shakti-400 via-amber-300 to-amber-500 bg-clip-text text-transparent">Vindhyachal</span>
+              {t('hero_welcome')}{' '}
+              <span className="bg-gradient-to-r from-shakti-400 via-amber-300 to-amber-500 bg-clip-text text-transparent">
+                {t('hero_destination')}
+              </span>
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl text-amber-100 font-serif italic max-w-3xl mx-auto leading-relaxed">
-              &ldquo;Your intelligent companion for a meaningful pilgrimage.&rdquo;
+              {t('hero_quote')}
             </p>
           </div>
 
           <p className="text-base sm:text-lg md:text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed font-normal">
-            Discover the eternal sanctum of Adi Shakti Maa Vindhyavasini on the sacred banks of the Ganges.
-            Walk the holy Trikona Yatra with verified Aarti schedules, 3D interactive guidance, and accessibility-tailored planning.
+            {t('hero_desc')}
           </p>
 
           {/* Primary Action Buttons */}
@@ -85,7 +89,7 @@ export default function HomePage() {
               className="px-8 py-4 rounded-2xl font-serif font-bold text-base text-white bg-gradient-to-r from-shakti-600 via-shakti-500 to-amber-600 hover:from-shakti-500 hover:to-amber-500 shadow-2xl shadow-shakti-950/60 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5 glow-shakti"
             >
               <Compass className="w-5 h-5" />
-              <span>Explore Vindhyachal</span>
+              <span>{t('btn_explore_vindhyachal')}</span>
             </Link>
 
             {/* Option to view Maa Vindhyavasini photos */}
@@ -94,7 +98,7 @@ export default function HomePage() {
               className="px-7 py-4 rounded-2xl font-serif font-bold text-base text-amber-200 bg-gradient-to-r from-amber-950/80 to-slate-900/90 hover:bg-slate-800 border-2 border-amber-400/50 shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5"
             >
               <Camera className="w-5 h-5 text-amber-400" />
-              <span>View Maa Photos</span>
+              <span>{t('btn_view_photos')}</span>
             </a>
 
             {/* Dedicated History & Utpatti Module Link */}
@@ -103,7 +107,7 @@ export default function HomePage() {
               className="px-7 py-4 rounded-2xl font-serif font-bold text-base text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 border-2 border-amber-500/40 shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5"
             >
               <Sparkles className="w-5 h-5 text-amber-400" />
-              <span>History & Utpatti</span>
+              <span>{t('btn_history_utpatti')}</span>
             </a>
 
             <Link
@@ -111,7 +115,7 @@ export default function HomePage() {
               className="px-7 py-4 rounded-2xl font-serif font-semibold text-base text-slate-100 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2.5"
             >
               <Calendar className="w-5 h-5 text-amber-400" />
-              <span>Plan My Yatra</span>
+              <span>{t('btn_plan_yatra')}</span>
             </Link>
 
             <button
@@ -119,37 +123,37 @@ export default function HomePage() {
                 const btn = document.querySelector('button[aria-label="Ask Shakti Pilgrimage Assistant"]') as HTMLButtonElement;
                 btn?.click();
               }}
-              className="px-6 py-4 rounded-2xl text-sm font-semibold text-amber-200 hover:text-white bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 transition-all flex items-center justify-center gap-2"
+              className="px-6 py-4 rounded-2xl text-sm font-semibold text-amber-200 hover:text-white bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Bot className="w-4 h-4 text-amber-400" />
-              <span>Ask Shakti Assistant</span>
+              <span>{t('btn_ask_assistant')}</span>
             </button>
           </div>
 
           {/* Key Facts 3D Zoom Cards Grid */}
           <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
             <div className="card-3d p-4 rounded-3xl glass-panel border border-slate-800 cursor-pointer">
-              <span className="text-xs font-mono text-amber-400 font-bold uppercase">Sacred Sanctum</span>
-              <div className="text-base sm:text-lg font-bold text-white mt-1">Siddhpeeth</div>
-              <div className="text-xs sm:text-sm text-slate-300">Mahalakshmi Swaroop</div>
+              <span className="text-xs font-mono text-amber-400 font-bold uppercase">{t('stat_sanctum')}</span>
+              <div className="text-base sm:text-lg font-bold text-white mt-1">{t('stat_sanctum_val')}</div>
+              <div className="text-xs sm:text-sm text-slate-300">{t('stat_sanctum_sub')}</div>
             </div>
 
             <div className="card-3d p-4 rounded-3xl glass-panel border border-slate-800 cursor-pointer">
-              <span className="text-xs font-mono text-amber-400 font-bold uppercase">Holy Geometry</span>
-              <div className="text-base sm:text-lg font-bold text-white mt-1">Trikona Yatra</div>
-              <div className="text-xs sm:text-sm text-slate-300">3 Devi Manifestations</div>
+              <span className="text-xs font-mono text-amber-400 font-bold uppercase">{t('stat_geometry')}</span>
+              <div className="text-base sm:text-lg font-bold text-white mt-1">{t('stat_geometry_val')}</div>
+              <div className="text-xs sm:text-sm text-slate-300">{t('stat_geometry_sub')}</div>
             </div>
 
             <div className="card-3d p-4 rounded-3xl glass-panel border border-slate-800 cursor-pointer">
-              <span className="text-xs font-mono text-amber-400 font-bold uppercase">Accessibility</span>
-              <div className="text-base sm:text-lg font-bold text-white mt-1">Aerial Ropeway</div>
-              <div className="text-xs sm:text-sm text-slate-300">Senior Citizen Friendly</div>
+              <span className="text-xs font-mono text-amber-400 font-bold uppercase">{t('stat_access')}</span>
+              <div className="text-base sm:text-lg font-bold text-white mt-1">{t('stat_access_val')}</div>
+              <div className="text-xs sm:text-sm text-slate-300">{t('stat_access_sub')}</div>
             </div>
 
             <div className="card-3d p-4 rounded-3xl glass-panel border border-slate-800 cursor-pointer">
-              <span className="text-xs font-mono text-amber-400 font-bold uppercase">Verification</span>
-              <div className="text-base sm:text-lg font-bold text-emerald-400 mt-1">100% Grounded</div>
-              <div className="text-xs sm:text-sm text-slate-300">Zero Hallucinations</div>
+              <span className="text-xs font-mono text-amber-400 font-bold uppercase">{t('stat_verify')}</span>
+              <div className="text-base sm:text-lg font-bold text-emerald-400 mt-1">{t('stat_verify_val')}</div>
+              <div className="text-xs sm:text-sm text-slate-300">{t('stat_verify_sub')}</div>
             </div>
           </div>
 

@@ -5,6 +5,7 @@ import { Footer } from "@/components/navigation/Footer";
 import { ShaktiAssistantModal } from "@/components/ai/ShaktiAssistantModal";
 import { WelcomeMantraAudio } from "@/components/audio/WelcomeMantraAudio";
 import { SacredCornerDarshan } from "@/components/temple/SacredCornerDarshan";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "SHAKTI YATRA — Smart Pilgrimage Assistance Platform | Vindhyachal",
@@ -32,23 +33,25 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="min-h-screen bg-slate-950 text-slate-100 antialiased flex flex-col selection:bg-shakti-500 selection:text-white">
-        {/* Sacred Corner Photo of Maa Vindhyavasini */}
-        <SacredCornerDarshan />
+        <LanguageProvider>
+          {/* Sacred Corner Photo of Maa Vindhyavasini */}
+          <SacredCornerDarshan />
 
-        {/* Welcome Sacred Audio Chant (Plays once on opening) */}
-        <WelcomeMantraAudio />
+          {/* Welcome Sacred Audio Chant (Plays once on opening) */}
+          <WelcomeMantraAudio />
 
-        {/* Main Navigation */}
-        <Navbar />
+          {/* Main Navigation */}
+          <Navbar />
 
-        {/* Page Content */}
-        <main className="flex-1">{children}</main>
+          {/* Page Content */}
+          <main className="flex-1">{children}</main>
 
-        {/* Platform Footer */}
-        <Footer />
+          {/* Platform Footer */}
+          <Footer />
 
-        {/* Floating AI Pilgrimage Assistant */}
-        <ShaktiAssistantModal />
+          {/* Floating AI Pilgrimage Assistant */}
+          <ShaktiAssistantModal />
+        </LanguageProvider>
       </body>
     </html>
   );

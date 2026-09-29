@@ -18,8 +18,10 @@ import {
   Sparkles
 } from 'lucide-react';
 import { fetchNearbyPlaces, PlaceItem, NeighboringTown } from '@/lib/api';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const GooglePlacesExplorer: React.FC = () => {
+  const { language, t } = useLanguage();
   const [places, setPlaces] = useState<PlaceItem[]>([]);
   const [neighborTowns, setNeighborTowns] = useState<NeighboringTown[]>([]);
   const [selectedPlace, setSelectedPlace] = useState<PlaceItem | null>(null);
@@ -47,12 +49,12 @@ export const GooglePlacesExplorer: React.FC = () => {
   }, [activeCategory, searchQuery]);
 
   const categories = [
-    { id: 'all', label: 'All Shrines & Places', icon: Compass },
-    { id: 'Hotels', label: 'Hotels & Dharamshalas', icon: Hotel },
-    { id: 'Sacred Sanctum', label: 'Sacred Temples & Kunds', icon: Sparkles },
-    { id: 'Restaurants', label: 'Sattvik Food & Prasadam', icon: Utensils },
-    { id: 'Railway', label: 'Stations & Transport', icon: Train },
-    { id: 'Medical', label: 'Hospitals & CHC', icon: Hospital },
+    { id: 'all', label: t('places_cat_all'), icon: Compass },
+    { id: 'Hotels', label: t('places_cat_hotels'), icon: Hotel },
+    { id: 'Sacred Sanctum', label: t('places_cat_temples'), icon: Sparkles },
+    { id: 'Restaurants', label: t('places_cat_food'), icon: Utensils },
+    { id: 'Railway', label: t('places_cat_transport'), icon: Train },
+    { id: 'Medical', label: t('places_cat_medical'), icon: Hospital },
   ];
 
   return (
@@ -62,13 +64,13 @@ export const GooglePlacesExplorer: React.FC = () => {
         <div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-sm font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/15 border border-amber-500/30 mb-3">
             <MapPin className="w-4 h-4 text-amber-400" />
-            <span>Google Maps & Location Intelligence</span>
+            <span>{t('places_badge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight">
-            Vindhyachal Neighbor Locations & Hotels Finder
+            {t('places_title')}
           </h2>
           <p className="text-slate-300 mt-3 max-w-2xl text-base sm:text-lg leading-relaxed">
-            Real-time coordinates, live Google Maps turn-by-turn navigation, verified hotels, sacred ghats, and neighbor heritage towns around Maa Vindhyavasini Dham.
+            {t('places_desc')}
           </p>
         </div>
 
@@ -78,7 +80,7 @@ export const GooglePlacesExplorer: React.FC = () => {
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Search hotel, ghat, station..."
+              placeholder={t('places_search_placeholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-900 border border-slate-700 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400"

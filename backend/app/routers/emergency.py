@@ -21,5 +21,8 @@ def get_emergency_contacts(
     if category:
         query = query.filter(EmergencyContact.category.ilike(f"%{category}%"))
     
-    contacts = query.order_by(EmergencyContact.priority.asc()).all()
+    contacts = query.order_by(EmergencyContact.priority.asc(), EmergencyContact.id.asc()).all()
+    if not contacts:
+        from app.seed.seed_data import EMERGENCY_CONTACTS_DATA
+        return EMERGENCY_CONTACTS_DATA
     return contacts

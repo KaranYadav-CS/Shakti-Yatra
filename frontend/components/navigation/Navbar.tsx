@@ -14,10 +14,13 @@ import {
   Code
 } from 'lucide-react';
 import { AccessibilityToggle } from '../common/AccessibilityToggle';
+import { LanguageSwitcher } from '../common/LanguageSwitcher';
+import { useLanguage } from '@/context/LanguageContext';
 import { searchPilgrimage, SearchResult } from '@/lib/api';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -54,14 +57,15 @@ export const Navbar: React.FC = () => {
   }, [searchOpen]);
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/destinations/vindhyachal', label: 'Vindhyachal Dham' },
-    { href: '/#maa-vindhyavasini-photos', label: 'Maa Photos', icon: true },
-    { href: '/explore', label: 'Explore Shrines' },
-    { href: '/plan', label: 'Plan Yatra' },
-    { href: '/map', label: 'Pilgrim Map' },
-    { href: '/emergency', label: 'Emergency', badge: '112/108' },
-    { href: '/my-yatra', label: 'My Yatra' },
+    { href: '/', label: t('nav_home', 'Home') },
+    { href: '/destinations/vindhyachal', label: t('nav_vindhyachal', 'Vindhyachal Dham') },
+    { href: '/history', label: t('nav_history', 'History & Utpatti') },
+    { href: '/#maa-vindhyavasini-photos', label: t('nav_photos', 'Maa Photos'), icon: true },
+    { href: '/#places-explorer', label: t('nav_hotels_map', 'Hotels & Map') },
+    { href: '/explore', label: t('nav_explore', 'Explore Shrines') },
+    { href: '/plan', label: t('nav_plan', 'Plan Yatra') },
+    { href: '/emergency', label: t('nav_emergency', 'Emergency'), badge: '112/108' },
+    { href: '/my-yatra', label: t('nav_my_yatra', 'My Yatra') },
   ];
 
   return (
@@ -71,12 +75,12 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between text-xs sm:text-sm font-medium">
           <div className="flex items-center gap-2 text-amber-300">
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-            <span className="font-serif">Shakti Yatra • Smart Pilgrimage Assistance Platform</span>
+            <span className="font-serif">{t('top_bar_title', 'Shakti Yatra • Smart Pilgrimage Assistance Platform')}</span>
           </div>
 
           <div className="flex items-center gap-2">
             <span className="px-3 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/40">
-              Developed by Karan Yadav
+              {t('developed_by', 'Developed by Karan Yadav')}
             </span>
           </div>
         </div>
@@ -130,10 +134,13 @@ export const Navbar: React.FC = () => {
 
           {/* RIGHT CONTROLS */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Language Switcher */}
+            <LanguageSwitcher compact />
+
             {/* Working Search Trigger */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2.5 px-4 py-2 rounded-2xl text-sm bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-slate-200 transition-all shadow-md"
+              className="flex items-center gap-2.5 px-3 sm:px-4 py-2 rounded-2xl text-sm bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-slate-200 transition-all shadow-md"
               aria-label="Search Temples and Facilities"
             >
               <Search className="w-4 h-4 text-amber-400" />
@@ -160,8 +167,12 @@ export const Navbar: React.FC = () => {
         {/* MOBILE MENU DRAWER */}
         {mobileMenuOpen && (
           <div className="xl:hidden border-t border-slate-800/80 bg-slate-950/98 backdrop-blur-2xl px-5 py-6 space-y-3 animate-in slide-in-from-top-4">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+              <span className="text-xs font-semibold text-slate-400">Language / भाषा:</span>
+              <LanguageSwitcher />
+            </div>
             <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs font-serif font-bold text-center">
-              Developed by Karan Yadav
+              {t('developed_by', 'Developed by Karan Yadav')}
             </div>
             {navLinks.map((link) => (
               <Link

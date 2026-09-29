@@ -16,6 +16,7 @@ import {
   Flame
 } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface HistoryTab {
   id: string;
@@ -25,37 +26,38 @@ interface HistoryTab {
 }
 
 export const VindhyachalHistoryModule: React.FC = () => {
+  const { language, t } = useLanguage();
   const [activeTab, setActiveTab] = useState<string>('utpatti-devi');
 
   const tabs: HistoryTab[] = [
     {
       id: 'utpatti-devi',
-      label: 'Maa Utpatti',
-      subtitle: 'Cosmic Emergence & Siddhpeeth',
+      label: t('tab_maa_utpatti'),
+      subtitle: language === 'hi' ? 'ब्रह्मांडीय प्राकट्य व सिद्धपीठ' : 'Cosmic Emergence & Siddhpeeth',
       icon: Sparkles
     },
     {
       id: 'utpatti-parvat',
-      label: 'Vindhya Parvat',
-      subtitle: 'Sage Agastya & The Bowed Peak',
+      label: t('tab_parvat_utpatti'),
+      subtitle: language === 'hi' ? 'महर्षि अगस्त्य व विंध्य नमन' : 'Sage Agastya & The Bowed Peak',
       icon: Mountain
     },
     {
       id: 'ramayana',
-      label: 'Ramayana Era',
-      subtitle: 'Shri Ram, Sita Kund & Ramgaya',
+      label: t('tab_ramayana'),
+      subtitle: language === 'hi' ? 'श्रीराम, सीता कुंड व रामगया' : 'Shri Ram, Sita Kund & Ramgaya',
       icon: Sun
     },
     {
       id: 'krishna-gita',
-      label: 'Shri Krishna & Gita',
-      subtitle: 'Devi Yogamaya & Kansa Defeat',
+      label: t('tab_krishna_gita'),
+      subtitle: language === 'hi' ? 'योगमाया व कंस पराभव' : 'Devi Yogamaya & Kansa Defeat',
       icon: Crown
     },
     {
       id: 'dharmic-shraddha',
-      label: 'Dharmic & Shraddha',
-      subtitle: 'Trikona Yatra & Uttarvahini Ganga',
+      label: t('tab_dharmic_shraddha'),
+      subtitle: language === 'hi' ? 'त्रिकोण यात्रा व उत्तरवाहिनी गंगा' : 'Trikona Yatra & Uttarvahini Ganga',
       icon: Scroll
     }
   ];
@@ -66,13 +68,13 @@ export const VindhyachalHistoryModule: React.FC = () => {
       <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold uppercase tracking-wider text-amber-300 bg-amber-500/15 border border-amber-500/30">
           <BookOpen className="w-4 h-4 text-amber-400" />
-          <span>Sacred Chronicles & Intellectual Wisdom</span>
+          <span>{t('history_badge')}</span>
         </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
-          History of Vindhyachal & Complete Divinity of Maa Vindhyavasini
+          {t('history_title')}
         </h2>
         <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-          Explore the eternal origins, Puranic chronicles, scriptural citations from the Ramayana, Mahabharata, and Gita, and the intellectual philosophy behind India&apos;s foremost living Siddhpeeth.
+          {t('history_desc')}
         </p>
       </div>
 
